@@ -182,5 +182,12 @@
 			res = arr3.flat(Infinity)   //["a", "b", "c", "d", "f"]
 
 			console.log('新数组', res)
-			
+
+十三、移动端报错（浏览器默认行为）	
+	Unable to preventDefault inside passive event listener due to target being treated as passive. See
+	
+	解决方案：
+		配置全局样式：
+			touch-action: none
+		
 		

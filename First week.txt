@@ -30,6 +30,9 @@
 			 <Option :label="$t('calendar.weeklyRepeat')" :value="1" ></Option>
 				<Option :label="$t('calendar.weeklyRepeat')" :value="2" ></Option>
 				<Option :label="$t('calendar.weeklyRepeat')" :value="3" ></Option>
+				
+		合并写法：
+			<li>{{$t(`calendar.${week.lang}`)}}</li>           week: [{value: 1, lang: 'monday'}]
 			
 -----------------------------------------
 
