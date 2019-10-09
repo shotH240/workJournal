@@ -1,0 +1,42 @@
+一、文本获取焦点
+	this.$refs.textarea.children[0].focus()
+	
+	--  ref绑定的是文本域外层的div,然后通过该refs的children属性来截取该div中的某一个元素
+	
+二、某个区域点击时显示,点击其他区域时隐藏
+	--  设置一个跟文本域层同级的div   固定定位,让他占满整个视口,并
+		设置权重,并将点击事件绑定在该层上,当点击该层时,就隐藏该文本域
+     position fixed
+	  left 0
+	  top 0
+	  right 0
+	  bottom 0
+	  z-index 100
+	
+	--  在文本域中设置更高权重      z-index 1000
+
+三、移动端连续点击时报错
+		报错信息：
+				[Intervention] Unable to preventDefault inside passive event listener due to target being treated as passive. See
+		解决方案：
+			在根元素上添加touch-action: none;
+			给html加上CSS 属性 touch-action: none; 这样任何触摸事件都不会产生默认行为，但是 touch 事件照样触发。
+		touch-action：用于指定某个给定的区域是否允许用户操作，以及如何响应用户操作（比如浏览器自带的划动、缩放等）。	
+	
+	
+四、Object.assign()	合并对象
+
+	const target = {a: 1, b: 2}
+    const source1 = {b: 3, c: 4}
+    const source2 = {c: 5}
+	Object.assign(target,source1,source2)
+	console.log('target', target)	// {a:1, b:3, c:5}
+	
+	注：
+		(1)第一个参数为合并的目标对象,后面的参数为被合并的对象
+		(2)如果出现合并属性一样时,后面的会覆盖前面的
+		(3)assign为浅拷贝
+	
+	
+	
+	
