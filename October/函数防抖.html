@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数的防抖</title>
+</head>
+<body>
+   <input type="text" placeholder="请输入">
+   <script>
+       
+       /**
+          函数防抖
+            在事件被触发n秒后再执行回调,如果在这n秒内又被触发,则重新计时
+       */
+       window.onload = function () {
+         function ajax(content) {
+           console.log('request' + content)
+         }
+
+         //防抖函数
+         function debounce(fun, delay) {
+           return function (args) {
+             let that = this
+             let _args = args
+             clearTimeout(fun.id)
+             fun.id = setTimeout(function(){
+               fun.call(that, _args)
+             }, delay) 
+           }
+         }
+
+         let inp = document.getElementsByTagName('input')[0]
+
+         let debounceAjax = debounce(ajax, 500)
+
+         console.log('debounceAjax', debounceAjax)
+         
+         inp.addEventListener('keyup', function (ev) {
+        //    ajax(ev.target.value)    // 当用户键盘输入时,会一直触发该函数
+           debounceAjax(ev.target.value)
+         })
+         
+       }
+   </script> 
+</body>
+</html>
