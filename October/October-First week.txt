@@ -36,6 +36,79 @@
 		(1)第一个参数为合并的目标对象,后面的参数为被合并的对象
 		(2)如果出现合并属性一样时,后面的会覆盖前面的
 		(3)assign为浅拷贝
+		
+五、FileReader	创建读取文件对象
+	
+	let fileReader = new FileReader()
+	
+	FileReader接口方法：
+	  FileReader接口有4个方法，其中3个用来读取文件，
+	  另一个用来中断读取。无论读取成功或失败，
+	  方法并不会返回读取结果，这一结果存储在result属性中
+		(1)readAsBlnaryString       param:file				将文件取为二进制编码
+		(2)readAsText				param:file,[encoding]	将文件取为文本
+		(3)readAsDataURL			param:file				将文件取为DataURL
+		(4)abort					none					中断读取操作
+		
+	FileReader接口事件：
+		(1)onabort		中断
+		(2)onerror		出错
+		(3)onloadstart	开始
+		(4)onprogress	正在读取
+		(5)onload		成功读取
+		(6)onloadend	读取完成
+		
+六、vue 3.0安装
+	
+	npm uninstall vue-cli -g  or   yarn global remove vue-cli		卸载全局的vue2.0
+	
+	vue-v
+	
+	npm install -g @vue/cli-init 重新安装vue
+
+	
+七、createDocumentFragment()	创建dom文档片段
+
+	文档片段存在于内存中,并不在dom树中,所以将子元素插入到文档片段时不会引起回流,使用文档片段能带来更好的性能
+	
+	多个子节点需要添加到父节点时,可以先将其添置fragment内,最后将fragment添加到父节点中
+	
+	let fragment = document.createDocumentFragment()
+	
+	fragment.appendChild(file)
+	
+	ul.appendChild(fragment)
+	
+
+八、if中的in
+
+	let obj = {age: 22}
+	
+	if ('age' in obj) {
+		// age存在于obj中
+	} else {
+		// age不存在与obj中
+	}
+	
+	用以判断一个对象里是否包含某个属性
+		
+
+九、抛出异常	throw
+	
+	throw new ReferenceError("property" + property + "does not exist")
+	
+
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
