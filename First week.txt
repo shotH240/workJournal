@@ -23,6 +23,7 @@
 三、			
 	il8n转换写法：
 				
+		data中的变量：		
 		js中：this.$t('calendar.days')
 		html标签中:  {{$t('calendar.monday')}} 
 		在标签属性中：:label="$t('calendar.weeklyRepeat')"
@@ -34,6 +35,49 @@
 		合并写法：
 			<li>{{$t(`calendar.${week.lang}`)}}</li>           week: [{value: 1, lang: 'monday'}]
 			
+		特殊情况：
+			(1)定义在vue的data中,可能会出现this.$t()为未定义的情况
+			
+			解决方法：
+				在mounted中初始化该变量并赋值给data中的属性
+				data () {
+					return {
+						msg: '',
+						tt: '',
+						obj: {title: this.tt}
+					}
+				}
+				
+				mounted () {
+					this.msg = this.$t('message.info')
+					this.tt = this.$t('message.title)
+				}
+				
+			(2) 在vue的data中,并且定义在data中的某个对象或数组属性,在data中不能使用this.的方式来为某个属性赋值
+				
+			解决方法：
+				在mounted中定义一个初始化的方法
+				      dateSegmentData: [
+						{
+						  is: 'cube-date-picker',
+						  title: '',
+						  min: subMonths(new Date(), 0),
+						  max: new Date()
+						},
+						{
+						  is: 'cube-date-picker',
+						  title: '',
+						  min: subMonths(new Date(), 6),
+						  max: new Date()
+						}
+					  ],
+					  placeholder: ''
+				方法：
+					   setDateText () {
+						  this.dateSegmentData[0].title = this.$t('attendance.startDate')	
+						  this.dateSegmentData[1].title = this.$t('attendance.endDate')
+						  this.placeholder = this.$t('attendance.inputAbnormalReason')
+						},
 -----------------------------------------
 
 Driver.js

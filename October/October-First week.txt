@@ -97,7 +97,8 @@
 	
 	throw new ReferenceError("property" + property + "does not exist")
 	
-
+十、父组件通过ref调用子组件的方法
+	
 	
 
 

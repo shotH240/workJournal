@@ -1,0 +1,56 @@
+安装：
+	npm i -g typescript 	  --全局安装typescript
+	
+	tsc -v					  --检测typescript的版本号
+	
+	D:    => 	cd work\typeScript\ts
+	
+	
+	运行方式：	https://www.cnblogs.com/yasepix/p/9294491.html
+	
+	
+运行步骤：
+	1.创建package.json,并安装相关依赖
+			{
+			  "name": "hello-typescript",
+			  "version": "0.0.1",
+			  "description": "Learning TypeScript.",
+			  "scripts": {
+				"start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\"",
+				"lite": "lite-server",
+				"tsc": "tsc",
+				"tsc:w": "tsc -w"
+			  },
+			  "author": "2gua",
+			  "license": "ISC",
+			  "dependencies": {},
+			  "devDependencies": {
+				"lite-server": "^2.2.0",
+				"concurrently": "^2.0.0"
+			  }
+			}
+			
+	2.创建tsconfig.json
+			{
+				"compilerOptions": {
+				  "target": "es5",
+				  "module": "amd",
+				  "sourceMap": true
+				},
+				"exclude": [
+				  "node_modules",
+				  "typings/main",
+				  "typings/main.d.ts"
+				]
+			}	
+			
+	3.创建index.ts文件
+
+	4.创建index.html并引入index.js
+	
+	5.终端运行npm start,关闭弹出页
+	
+	6.运行index.html
+			
+			
+			

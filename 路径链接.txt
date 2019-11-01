@@ -1,0 +1,2 @@
+typeScript入门教程	https://ts.xcatliu.com/introduction/what-is-typescript
+oms					https://isso.oppoer.me/login?service=https%3A%2F%2Foms.myoas.com%2Fapi%2Fuser%2Flogin&locale=zh_CN

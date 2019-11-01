@@ -1,0 +1,61 @@
+周末任务：
+
+一、whistle学习(前端抓包)
+	https://segmentfault.com/a/1190000016058875?utm_source=tag-newest#articleHeader0
+	
+二、ts接口
+
+三、研究Outlook	
+
+四、WebViewJavascriptBridge(了解)	JsBridge
+	https://www.jianshu.com/p/d12ec047ce52
+	
+五、前端js实现多语言切换
+
+六、VueAMap(vue地图插件)
+	高德地图js-api帮助文档： https://lbs.amap.com/demo-center/js-api
+
+七、vscode插件
+	Auto Close Tag
+	Auto Rename Tag
+	Beautify
+	Chinese
+	Code Runner
+	Color Info
+	CSS Peek
+	Debugger for Chrome
+	ESLint
+	GitLens - Git super
+	HTML Snippets
+	HTML Boilerplate
+	HTML CSS Support
+	open in browser
+	Path Interllisense
+	REST Client
+	Vutur
+	
+八、相对路径下在地图中使用自定义图片无法显示出来
+	分析：
+		通过css的调试,发现相同的路径,在正常的html中可以显示,但是在地图中使用相同的路径确无法生效
+		因为在html中的图片路径通过dist打包后已转换了路径,而地图中在页面加载使用的依然是相对路径,
+		所以找不到图片
+		
+	解决方法：
+		找到显示该图片的层,在css中通过设置背景图片的方式引用相对路径,并设置background-size: 100%
+		
+九、vue修饰符sync学习
+
+十、路由跳转时的加载进度条	nprogress	
+
+十一、时间组件	date-fns
+
+          min: subMonths(new Date(), 5),
+          max: addMonths(new Date(), 5),
+          value: new Date()
+		  
+		  min: subMonths(new Date(), 0),
+          max: addMonths(new Date(), 5)
+	
+十二、移动端真机调试	
+	https://www.cnblogs.com/liutao8888/p/10004499.html
+	
