@@ -1,0 +1,96 @@
+一、如何打开.RP文件
+	下载	Axure RP 8软件
+	文件 => 从RP文件导入   就可以导入RP文件
+	导入报错,未能加载文件或程序集
+	解决方法：
+		1、发现异常类型为加载file错误，文件实际为F#，版本为2.0.0.0
+
+		2、百度搜索F# 2.0 runtime，
+
+			这里附一个地址：https://www.microsoft.com/en-us/download/details.aspx?id=13450
+
+		3、安装下载的文件，重启后OK
+		
+二、如何监听dom元素的变化(比如一个div里面的内容变化)
+	解决方法：
+		在mounted中使用定时器,每一秒重新获取一次数据
+		  mounted () {
+			setInterval(() => {
+			this.userFeedbackText = this.$refs.feedbackLength.innerHTML
+		  }, 1000)
+		}
+	附注：这种情况使用setInterval可能会报 'innerHTML is not undefined',setInterval哪怕报错也会一直执行
+	解决方法：
+		改用setTimeout,自己调自己
+		实现方法 timerFun
+		
+		    timerFun () {
+			   let timer = setInterval(() => {
+				  this.userFeedbackText = this.$refs.feedbackLength.innerHTML
+				  this.timerFun()
+				  clearTimeout(timer)
+				}, 1000)
+			}
+			
+			在mounted中调用该方法
+			mounted () { this.timerFun() }
+			
+
+三、制作空实心三角形  
+.icon-left {
+      border: 0.07rem solid;
+      border-color: transparent #FF5353 transparent transparent;
+      position: absolute;
+      left: 105px;
+      top: 11px;
+    }
+    .icon-left::after {
+      content: '';
+      border: 0.07rem solid;
+      border-color: transparent #FFFFFF transparent transparent;
+    //   border-color: transparent blue transparent transparent;
+    //   border-right: none;
+      position: absolute;
+      left: -4px;
+      top: -5px;
+    }
+	
+	
+四、由跟路由转换为指定路由,出现无法跳到指定页面的情况,
+	例： path: '/'	转换为 path: '/oaudit/employeealarminfo'  
+	如果未配置路由模式为history   则需要在url后面注入(/#/)才能生效  http://localhost:8080/#/oaudit/employeealarminfo
+	解决方法：注意路由中的路由方式,mode可设置为history
+	
+五、配置代理
+    在vue.config.js中配置devServer来设置代理
+	  devServer: {
+		proxy: {	=> proxy代理
+		  '/consoleapi': {		// 接口前的前缀,通过正则的方式匹配 如：	url: '/consoleapi/ByContent'
+			target: 'https://ibapsit.myoas.com/ibap',	// 测试环境接口IP或者域名(对应的是要跨域的域)
+			changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
+			pathRewrite: {   // 通过正则来匹配前缀
+			  '^/consoleapi': '/consoleapi'
+			}
+		  }
+		}
+	  }
+	  
+六、获取url地址上的指定参数(封装函数)
+	// 获取url上面的token
+    getQueryByParams (name) {
+      let reg = new RegExp('[?&]' + name + '=([^&#]*)', 'i')
+      let res = window.location.href.match(reg)
+      if (res && res.length > 1) {
+        return decodeURIComponent(res[1])
+      }
+      return false
+    }
+	
+	注：参数只需要传入想要获取的参数名即可
+	
+	
+	
+	
+		
+		
+			

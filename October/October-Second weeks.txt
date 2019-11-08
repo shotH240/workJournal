@@ -59,3 +59,21 @@
 十二、移动端真机调试	
 	https://www.cnblogs.com/liutao8888/p/10004499.html
 	
+十三、修改浏览器滚动条样式
+
+十四、项目问题(优先解决)
+	  (1) 根据变量来设置页面背景
+	  (2) 检查定时器
+	  
+	  
+	timerFun () {
+      let timer = setInterval(() => {
+        this.userFeedbackText = this.$refs.feedbackLength.innerHTML
+        this.timerFun()
+        clearTimeout(timer)
+      }, 1000)
+    }
+	
+	解析：因为需要操纵元素,并即使的获取这个div里面的内容变化,所以通过定时器的方式,每一秒获取一下,
+		  但是有时候会出现定时器报错,原因是feedbackLength.innerHTML is not undefined
+		  然后报错信息一直存在
