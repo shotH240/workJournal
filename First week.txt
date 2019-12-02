@@ -26,7 +26,7 @@
 		data中的变量：		
 		js中：this.$t('calendar.days')
 		html标签中:  {{$t('calendar.monday')}} 
-		在标签属性中：:label="$t('calendar.weeklyRepeat')"
+		在html标签属性中：:label="$t('calendar.weeklyRepeat')"
 		
 			 <Option :label="$t('calendar.weeklyRepeat')" :value="1" ></Option>
 				<Option :label="$t('calendar.weeklyRepeat')" :value="2" ></Option>

@@ -89,8 +89,65 @@
 	注：参数只需要传入想要获取的参数名即可
 	
 	
+七、定点登陆
+	引入request.js和serve.js,并在判断code失败时添加一个res.code === 20000(该code码需与后端给的失败的code码一致)
 	
+八、组件切换时,监听vuex中的状态值,第一个状态值监听不到
+
+  watch: {
+    feedbackData: {
+      handler (val) {
+        if (val.problemFeedback) {
+          if (val.problemFeedback.length >= 54 && val.problemFeedback.length < 90) {
+            // this.controlFootSize = 'fontSize:0.84rem;'
+            this.controlFootSize = 'fontSize:0.84rem;lineHeight: 1.2rem;color: yellow'
+          } else if (val.problemFeedback.length >= 90) {
+            // this.controlFootSize = 'fontSize:0.68rem;'
+            this.controlFootSize = 'fontSize:0.68rem;lineHeight: 1rem;color: red'
+          } else {
+            // this.controlFootSize = 'fontSize:1.06rem;'
+            this.controlFootSize = 'fontSize:1.06rem;lineHeight: 1.5rem;color: blue'
+          }
+        }
+      },
+      immediate: true
+    }
+  }
+  
+  解决方法：
+	通过handler () {}  的方式
+	然后设置immediate为true初始化
+  补充：
+    如果监听的是一个对象,则需要使用	设置deep: true的方式来深度监听
 	
+九、如何监听一个div文本内容长度的变化
+    (1)  使用定时器的方式,每多少秒通过$refs获取一次div文本内容的长度
+		 缺点： 使用定时器来监听div的文本内容,如果长度没有发生变化,可能会因为获取不到元素而一直报错
+		 
+	(2) vuex配合watch来监听div文本内容长度
+		将div的文本信息通过vuex保存起来,在该div的组件中通过watch来监听这个state的状态值
+		缺点：如果该组件切换时,可能会导致每次切换回该组件的第一条数据无法监听到
+		解决方法： 在监听器中使用handler，并配置immediate为true
 		
+十、rem比例下设置背景图片超大溢出   background-size: cover
+
+十一、ajax请求的Request payload 和 Form Data
+	  -- 在请求头中配置Content-type来决定当前是Request payload 还是Form Data
+	  'Content-type': 'application/x-www-form-urlencoded'				-- Form Data
+	  'Content-type': 'application/json'								-- Request payload
+	
+十二、解决computed无法操纵dom的问题
+	  在data中定义一个flag: false 
+	  在mounted中将flag转换为true
+	  在计算属性中判断flag为true时来获取dom
+	      tex () {
+			if (this.flag) {
+			  console.log('ref', this.$refs)
+			}
+			return ''
+		  },
+	
+十三、浏览器对象 navigator  navigator对象包含有关浏览器的信息
+	
 		
 			

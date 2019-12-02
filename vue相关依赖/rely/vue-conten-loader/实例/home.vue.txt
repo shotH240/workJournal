@@ -1,0 +1,47 @@
+<template>
+  <section>
+    <content-loader
+      :height="600">
+      <rect x="0" y="0" rx="0" ry="0" width="400" height="20"></rect>
+      <rect x="20" y="22" rx="0" ry="0" width="360" height="50"></rect>
+      <rect x="20" y="74" rx="0" ry="0" width="260" height="25"></rect>
+      <!-- <rect x="20" y="101" rx="0" ry="0" width="260" height="100"></rect> -->
+      <!--公司新闻列表start-->
+      <rect x="20" y="101" rx="1" ry="1" width="40" height="10"></rect>
+      <rect x="20" y="116" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="20" y="130" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="20" y="144" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="20" y="158" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="20" y="172" rx="2" ry="2" width="116" height="8"></rect>
+      <!-- <circle cx="24" cy="190" r="4"></circle> -->
+      <rect x="20" y="186" rx="2" ry="2" width="116" height="8"></rect>
+      <!------------------分割线------------------->
+      <rect x="152" y="101" rx="1" ry="1" width="40" height="10"></rect>
+      <rect x="152" y="116" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="152" y="130" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="152" y="144" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="152" y="158" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="152" y="172" rx="2" ry="2" width="116" height="8"></rect>
+      <rect x="152" y="186" rx="2" ry="2" width="116" height="8"></rect>
+      <!--公司新闻列表end-->
+      <!-- <rect x="282" y="74" rx="0" ry="0" width="98" height="127"></rect> -->
+      <!--个人信息与日程-->
+      <circle cx="297" cy="89" r="8"></circle>
+      <rect x="307" y="84" rx="2" ry="2" width="48" height="4"></rect>
+      <rect x="307" y="90" rx="2" ry="2" width="68" height="4"></rect>
+      <rect x="290" y="108" rx="2" ry="2" width="88" height="8"></rect>
+      <rect x="290" y="118" rx="2" ry="2" width="88" height="8"></rect>
+      <rect x="290" y="128" rx="2" ry="2" width="88" height="8"></rect>
+    </content-loader>
+  </section>
+</template>
+
+<script>
+import { ContentLoader } from 'vue-content-loader'
+export default {
+  name: 'HomeSkeleton',
+  components: {
+    ContentLoader
+  }
+}
+</script>

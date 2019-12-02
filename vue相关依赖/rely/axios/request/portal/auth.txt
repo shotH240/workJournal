@@ -1,0 +1,54 @@
+import Cookies from 'js-cookie'
+
+const TokenKey = 'token'
+const WhiteList = ['language']
+export function getToken () {
+  // return Cookies.get(TokenKey)
+  return localStorage.getItem(TokenKey)
+}
+
+export function setToken (token) {
+  // return Cookies.set(TokenKey, token, { expires: 1 / 3 })
+  return localStorage.setItem(TokenKey, token)
+}
+
+export function removeToken () {
+  // return Cookies.remove(TokenKey)
+  return localStorage.removeItem(TokenKey)
+}
+
+export function ssoAuth () {
+  // 去掉token
+  let reg = /[?&]token=.*/
+  let url = window.location.href.replace(reg, '')
+  url = encodeURI(url)
+  window.location.href = `${process.env.VUE_APP_SSODOMIN}/sso/user/authenticate?from_url=${url}`
+}
+
+export function logout () {
+  let reg = /[?&]token=.*/
+  // let url = window.location.href.replace(reg, '')
+  let url = ''
+  if (!window.location.origin) {
+    let location = window.location
+    location.origin = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')
+  }
+  url = window.location.origin.replace(reg, '')
+  removeApplication()
+  url = encodeURI(url)
+  window.location.href = `${process.env.VUE_APP_SSODOMIN}/sso/user/login?from_url=${url}`
+}
+
+// 移除浏览器application所有数据
+function removeApplication () {
+  let keys = document.cookie.match(/[^ =;]+(?==)/g)
+  if (keys) {
+    for (var i = keys.length; i--;) {
+      if (WhiteList.indexOf(keys[i]) === -1) {
+        Cookies.remove(keys[i])
+      }
+    }
+  }
+  sessionStorage.clear()
+  localStorage.clear()
+}

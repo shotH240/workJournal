@@ -1,0 +1,12 @@
+package.json中的dependencies和devDependencies
+
+
+devDependencies： 指的是开发相关的一些依赖,他们只作用于开发环境，而不会作用于生产环境,例如webpack、gluo等上线后就用不到的资源
+				  使用 --save-dev 安装的 插件，被写入到 devDependencies 域里面去
+
+dependencies： 相比于devDependencies, dependencies相关的依赖将会被引入到生产环境中,比如我们的项目中需要用到element-ui，如果
+			   dependencies中没有,就会报错
+			   使用 --save 安装的插件，则是被写入到 dependencies 区块里面去
+			   
+			   
+在dependencies中,用户使用npm i 时会自动安装这些依赖,而devDependencies不会,因为他们只会布置在开发环境
