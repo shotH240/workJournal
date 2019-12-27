@@ -1,0 +1,50 @@
+<template>
+  <div class="new-message" v-if="isShow" :class="{'success': type === 'success', 'error': type === 'error'}">
+    <div class="color-left" :style="type === 'success' ? 'backgroundColor: #046A38' : 'backgroundColor: #D62E1B'"></div>
+    <div class="body-right">
+      <svg-icon :icon-class="type === 'success' ? 'promptSucces@1x' : 'promptFailure@1x'" class="body-icon" />
+      <div class="body-text">{{text}}</div>
+    </div>
+  </div>
+</template>
+
+<style lang='scss' scoped>
+.new-message {
+  position: fixed;
+  display: flex;
+  left: 45%;
+  top: 135px;
+  background: #FFFFFF;
+  box-shadow: 0 8px 20px 0 rgba(0,0,0,0.07);
+  min-width: 140px;
+  height: 52px;
+  font-size: 14px;
+  color: #262626;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  z-index: 10000;
+  .color-left {
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+  .body-right {
+    flex: 1;
+    padding-left: 12px;
+    border: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .body-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    .body-text {
+      color: #262626;
+      padding-right: 20px;
+    }
+  }
+}
+</style>

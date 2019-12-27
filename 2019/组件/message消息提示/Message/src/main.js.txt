@@ -1,0 +1,31 @@
+import Vue from 'vue'
+import toast from './main.vue'
+
+const TOASTZONSTRUCTOR = Vue.extend(toast)
+
+function showToast ({ text = 'success', type, duration = 3000 }) {
+  // console.log('type', type)
+  const toastEl = new TOASTZONSTRUCTOR({
+    el: document.createElement('div'),
+    data () {
+      return {
+        isShow: true,
+        text,
+        type
+      }
+    }
+  })
+  document.body.appendChild(toastEl.$el)
+  setTimeout(() => {
+    toastEl.isShow = false
+  }, duration)
+}
+
+function registryToast () {
+  Vue.prototype.$toast = showToast
+}
+
+export {
+  registryToast,
+  showToast
+}
