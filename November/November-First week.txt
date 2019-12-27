@@ -131,8 +131,8 @@
 		
 十、rem比例下设置背景图片超大溢出   background-size: cover
 
-十一、ajax请求的Request payload 和 Form Data
-	  -- 在请求头中配置Content-type来决定当前是Request payload 还是Form Data
+十一、ajax请求的Request payload 和 Form Data 和 Query String Parameters
+	  -- 在请求头中配置Content-type来决定当前是Request payload、Form Data
 	  'Content-type': 'application/x-www-form-urlencoded'				-- Form Data
 	  'Content-type': 'application/json'								-- Request payload
 	
@@ -149,5 +149,20 @@
 	
 十三、浏览器对象 navigator  navigator对象包含有关浏览器的信息
 	
-		
+十四、三角形(上面为实心，下面为空心)
+    .icon-left {
+      border: 0.1rem solid;
+      border-color: transparent #FF5353 transparent transparent;
+      position: absolute;
+      left: 1.41rem;
+      top: 0.1rem;
+    }
+    .icon-left::after {
+      content: '';
+      border: 0.1rem solid;
+      border-color: transparent #F7F9FB transparent transparent;
+      position: absolute;
+      left: -0.09rem;
+      top: -0.102rem;
+    }	
 			

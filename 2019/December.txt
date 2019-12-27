@@ -21,4 +21,102 @@
 二、axios源码分析	https://github.com/axios/axios
 
 --------------------------------------------------------------------------------------
+
+三、js函数库(一)  https://github.com/MarvenGong/ETools.git
+
+--------------------------------------------------------------------------------------
+
+四、CSS两行或多行显示省略号
+	
+	(1) 单行超出显示省略号
+		width: 50px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis
+	
+	(2) 多行超出显示省略号
+		width: 50px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2; // 控制多行的行数
+		-webkit-box-orient: vertical;
+
+--------------------------------------------------------------------------------------
+
+五、判断是否出现省略号(某个文本是否存在省略号，当出现省略号时候需要做些什么,比如鼠标悬停在文本上，如果有省略号就显示一个气泡，没有省略号的则不显示)
+	单行省略号模式下：
+		el.scrollWidth  文本宽度
+		el.offsetWidth	元素宽度
+	
+	=> 判断文本宽度大于元素高度时,则出现省略号
+	
+	多行省略号模式下：
+		el.scrollHeight 文本高度
+		el.offsetHeight 元素高度
+	
+	=> 文本高度大于元素高度时, 则出现省略号
+
+--------------------------------------------------------------------------------------
+
+六、去掉html标签的正则
+
+	return row.summary.replace(/<[^>]*>|<\/[^>]*>/gm, '') || '...'
+	  
+--------------------------------------------------------------------------------------
+
+七、Vue防抖
+	(1) npm i lodash     --安装 lodash
+	"lodash": "^4.17.15"
+	(2) 在需要防抖的组件中引入(如下)
+		import debounce from 'lodash/debounce'
+	(3)	防抖函数
+		// 文本框搜索防抖
+		enterSearch: debounce(function () {
+		  // 异步操作
+		  this.getList()
+		}, 500)
+	(4) html
+		<el-input :placeholder="$t('search.summary')" @input="enterSearch" v-model="formData.keyword">
+		
+--------------------------------------------------------------------------------------
+
+八、工具库lodash	https://www.lodashjs.com/
+	
+--------------------------------------------------------------------------------------
+
+九、自定义滚动条
+	核心样式：
+	// 超出高度显示滚动条
+	overflow: auto;
+	// 整个滚动条
+    &::-webkit-scrollbar {
+      width: 0.05rem;
+    }
+	// 滚动条的轨道
+    &::-webkit-scrollbar-track {
+      background-color: #ffa336;
+      border-radius: 5px;
+    }
+	// 滚动条的滑块
+    &::-webkit-scrollbar-thumb {
+      background-color: #ffc076;
+      border-radius: 5px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
