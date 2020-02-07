@@ -4,7 +4,9 @@
 
 
 
+let arr = [ {a: 'test'}, {a: 'test'}, {a: 'test'} ]
 
+arr.includes()
 
 
 
